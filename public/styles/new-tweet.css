@@ -1,0 +1,48 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+form {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5em 0;
+}
+
+form label {
+  font-weight: 600;
+}
+
+form textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  border-bottom: 5px solid #545149;
+  background-color: transparent;
+  line-height: 1;
+  height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #545149;
+  outline: none;
+  margin-top: 10px;
+}
+
+.formBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Bungee", sans-serif;
+  margin-top: 18px;
+}
+
+form button {
+  background-color: #4056a1;
+  color: #fff;
+  border: none;
+  padding: 5px 15px;
+}
