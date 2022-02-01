@@ -16,6 +16,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  min-width: 100vw;
 }
 
 nav .navLogo {
