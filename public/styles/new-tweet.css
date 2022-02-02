@@ -46,3 +46,7 @@ form button {
   border: none;
   padding: 5px 15px;
 }
+
+.negative-output{
+  color:red;
+}
