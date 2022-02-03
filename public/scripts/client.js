@@ -95,7 +95,15 @@ $(document).ready(function() {
     }
     if ($('textarea').val().length > 140) {
       alert("your tweet is too long (140 character max)")
+
     }
+
+    $.ajax('/tweets', {method: 'GET'})
+      .then(function(res) {
+        console.log(res);
+        renderTweets(res);
+
+      })
 
     $.post("/tweets", formContent);
   });
