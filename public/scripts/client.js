@@ -10,30 +10,30 @@
 // returns <article> element containing the info
 
 $(document).ready(function() {
-  const tweetData = [
-    {
-      user: {
-        name: "Newton",
-        avatars: "https://i.imgur.com/73hZDYK.png",
-        handle: "@SirIsaac",
-      },
-      content: {
-        text: "If I have seen further it is by standing on the shoulders of giants",
-      },
-      created_at: 1643618373314,
-    },
-    {
-      user: {
-        name: "Descartes",
-        avatars: "https://i.imgur.com/nlhLi3I.png",
-        handle: "@rd",
-      },
-      content: {
-        text: "Je pense , donc je suis",
-      },
-      created_at: 1643704773314,
-    },
-  ];
+  // const tweetData = [
+  //   {
+  //     user: {
+  //       name: "Newton",
+  //       avatars: "https://i.imgur.com/73hZDYK.png",
+  //       handle: "@SirIsaac",
+  //     },
+  //     content: {
+  //       text: "If I have seen further it is by standing on the shoulders of giants",
+  //     },
+  //     created_at: 1643618373314,
+  //   },
+  //   {
+  //     user: {
+  //       name: "Descartes",
+  //       avatars: "https://i.imgur.com/nlhLi3I.png",
+  //       handle: "@rd",
+  //     },
+  //     content: {
+  //       text: "Je pense , donc je suis",
+  //     },
+  //     created_at: 1643704773314,
+  //   },
+  // ];
 
   // renderTweets function
   // takes in an arary of tweets
@@ -83,7 +83,7 @@ $(document).ready(function() {
     return newTweet;
   };
 
-  renderTweets(tweetData);
+  // renderTweets(tweetData);
 
   $("#tweetForm").submit(function(event) {
     console.log("Handler for .submit() called.");
@@ -91,6 +91,16 @@ $(document).ready(function() {
     const formContent = $(this).serialize();
 
     $.post("/tweets", formContent);
+
+    const loadTweets = function() {
+      $.ajax('/tweets', {method: 'GET'})
+        .then(function(res) {
+          console.log(res);
+          renderTweets(res);
+
+        })
+    }
+    loadTweets();
 
   });
 });
