@@ -4,38 +4,36 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// function : createTweetElement 
+// function : createTweetElement
 //generates the DOM structure for a tweet
 // takes tweet object
-// returns <article> element containing the info 
-
+// returns <article> element containing the info
 
 $(document).ready(function() {
-
   const tweetData = [
     {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
+      user: {
+        name: "Newton",
+        avatars: "https://i.imgur.com/73hZDYK.png",
+        handle: "@SirIsaac",
       },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
+      content: {
+        text: "If I have seen further it is by standing on the shoulders of giants",
       },
-      "created_at": 1643618373314
+      created_at: 1643618373314,
     },
     {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
+      user: {
+        name: "Descartes",
+        avatars: "https://i.imgur.com/nlhLi3I.png",
+        handle: "@rd",
       },
-      "content": {
-        "text": "Je pense , donc je suis"
+      content: {
+        text: "Je pense , donc je suis",
       },
-      "created_at": 1643704773314
-    }
-  ]
+      created_at: 1643704773314,
+    },
+  ];
 
   // renderTweets function
   // takes in an arary of tweets
@@ -44,18 +42,16 @@ $(document).ready(function() {
   const renderTweets = function(tweetData) {
     for (let tweet of tweetData) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $("#tweets-container").append($tweet);
     }
-  }
+  };
 
   // createTweetElement function
   //takes in a tweet object and returns a tweet <article> element containing the entire HTML structure of the tweet.
   const createTweetElement = function(tweetData) {
-
     const timeStamp = timeago.format(tweetData.created_at);
 
-    let newTweet =
-      $(`<article class="tweet">
+    let newTweet = $(`<article class="tweet">
     <header>
     <div>
     
@@ -85,11 +81,17 @@ $(document).ready(function() {
     </article>`);
 
     return newTweet;
-  }
+  };
 
   renderTweets(tweetData);
 
+  $("#tweetForm").submit(function(event) {
+    console.log("Handler for .submit() called.");
+    event.preventDefault();
+    const formContent = $(this).serialize();
 
-})
+    $.post("/tweets", formContent);
 
+  });
+});
 
