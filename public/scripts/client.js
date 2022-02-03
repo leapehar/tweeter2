@@ -90,18 +90,24 @@ $(document).ready(function() {
     event.preventDefault();
     const formContent = $(this).serialize();
 
-    $.post("/tweets", formContent);
-
-    const loadTweets = function() {
-      $.ajax('/tweets', {method: 'GET'})
-        .then(function(res) {
-          console.log(res);
-          renderTweets(res);
-
-        })
+    if ($('textarea').val().length === 0) {
+      alert("you must enter a tweet before submitting")
     }
-    loadTweets();
+    if ($('textarea').val().length > 140) {
+      alert("your tweet is too long (140 character max)")
+    }
 
+    $.post("/tweets", formContent);
   });
+
+  const loadTweets = function() {
+    $.ajax('/tweets', {method: 'GET'})
+      .then(function(res) {
+        console.log(res);
+        renderTweets(res);
+
+      })
+  }
+  loadTweets();
 });
 
