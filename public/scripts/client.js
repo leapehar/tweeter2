@@ -26,6 +26,9 @@ $(document).ready(function() {
 
   const createTweetElement = function(tweetObj) {
 
+
+    const timeStamp = timeago.format(tweetObj.created_at);
+
     const newTweet =
       $(`<article class="tweet">
       <header>
@@ -46,7 +49,7 @@ $(document).ready(function() {
 
       <footer>
 
-        <span>${tweetObj.created_at}</span>
+        <span>${timeStamp}</span>
         <span class="tweetIcons">
           <i class="fas fa-flag"></i>
           <i class="fas fa-retweet"></i>

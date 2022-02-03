@@ -33,13 +33,20 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweet-element.css" type="text/css" />
-    
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+
+    <!-- timeago library -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+      integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
 
   <body>
@@ -80,25 +87,27 @@
           <header>
             <div>
               <div class="userAvatar">
-                <img src="images/old-man.png" alt="">
+                <img src="images/old-man.png" alt="" />
               </div>
               <span class="userName">Newton</span>
-
             </div>
             <span class="userHandle">@SirIsaac</span>
           </header>
           <div class="middle">
-            <p>If I have seen further is it by standing on the shoulders of giants</p>
+            <p>
+              If I have seen further is it by standing on the shoulders of
+              giants
+            </p>
           </div>
           <footer>
             <span>10 days ago</span>
-            <span class="tweetIcons"><i class="fas fa-flag"></i><i class="fas fa-retweet"></i><i class="fas fa-heart"></i></span>
+            <span class="tweetIcons"
+              ><i class="fas fa-flag"></i><i class="fas fa-retweet"></i
+              ><i class="fas fa-heart"></i
+            ></span>
           </footer>
         </article>
-        
-        
       </section>
-    
     </main>
     <script src="scripts/composer-char-counter.js"></script>
   </body>
