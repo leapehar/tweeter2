@@ -30,5 +30,24 @@ body {
 main {
   width: 90%;
   margin: 0 auto;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
+}
+
+@media only screen and (min-width: 1024px) {
+  .desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5%;
+    margin-top: 180px;
+  }
+
+  header.pageHeader {
+    width: 35%;
+  }
+
+  main {
+    width: 55%;
+    margin: 0;
+  }
 }

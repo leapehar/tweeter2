@@ -59,63 +59,68 @@
       ></span>
     </nav>
 
-    <header class="pageHeader">
-      <div class="headerImg">
-        <img src="/images/profile-hex.png" />
-      </div>
-      <br />
-      <div class="headerText">
-        <h2><span>Lea </span>Pehar</h2>
-      </div>
-    </header>
+    <div class="desktop">
+      <header class="pageHeader">
+        <div class="headerImg">
+          <img src="/images/profile-hex.png" />
+        </div>
+        <br />
+        <div class="headerText">
+          <h2><span>Lea </span>Pehar</h2>
+        </div>
+      </header>
+
+      <main class="container">
+        <section class="new-tweet">
+          <!-- <h2>Compose Tweet</h2> -->
+          <div class="error messageNoLengthError">
+            <p>you must enter a tweet before submitting</p>
+          </div>
+
+          <div class="error messageTooLongError">
+            <p>your tweet is too long (140 character max)</p>
+          </div>
+          <form action="/tweets" method="POST" id="tweetForm">
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea name="text" id="tweet-text"></textarea>
+            <div class="formBottom">
+              <button type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text"
+                >140</output
+              >
+            </div>
+          </form>
+        </section>
+        <section class="newTweetSection" id="tweets-container">
+          <article class="tweet">
+            <header>
+              <div>
+                <div class="userAvatar">
+                  <img src="images/old-man.png" alt="" />
+                </div>
+                <span class="userName">Newton</span>
+              </div>
+              <span class="userHandle">@SirIsaac</span>
+            </header>
+            <div class="middle">
+              <p>
+                If I have seen further is it by standing on the shoulders of
+                giants
+              </p>
+            </div>
+            <footer>
+              <span>10 days ago</span>
+              <span class="tweetIcons"
+                ><i class="fas fa-flag"></i><i class="fas fa-retweet"></i
+                ><i class="fas fa-heart"></i
+              ></span>
+            </footer>
+          </article>
+        </section>
+      </main>
+    </div>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <div class="error messageNoLengthError">
-          <p>you must enter a tweet before submitting</p>
-        </div>
-
-        <div class="error messageTooLongError">
-          <p>your tweet is too long (140 character max)</p>
-        </div>
-        <form action="/tweets" method="POST" id="tweetForm">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="formBottom">
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <section class="newTweetSection" id="tweets-container">
-        <article class="tweet">
-          <header>
-            <div>
-              <div class="userAvatar">
-                <img src="images/old-man.png" alt="" />
-              </div>
-              <span class="userName">Newton</span>
-            </div>
-            <span class="userHandle">@SirIsaac</span>
-          </header>
-          <div class="middle">
-            <p>
-              If I have seen further is it by standing on the shoulders of
-              giants
-            </p>
-          </div>
-          <footer>
-            <span>10 days ago</span>
-            <span class="tweetIcons"
-              ><i class="fas fa-flag"></i><i class="fas fa-retweet"></i
-              ><i class="fas fa-heart"></i
-            ></span>
-          </footer>
-        </article>
-      </section>
-    </main>
     <script src="scripts/composer-char-counter.js"></script>
   </body>
 </html>

@@ -56,6 +56,13 @@ $(document).ready(function() {
     }
   };
 
+  const loadTweets = function() {
+    $.ajax('/tweets', {method: 'GET'})
+      .then(function(res) {
+        console.log(res);
+        renderTweets(res);
+      })
+  };
   // createTweetElement function
   //takes in a tweet object and returns a tweet <article> element containing the entire HTML structure of the tweet.
   const createTweetElement = function(tweetData) {
@@ -111,34 +118,25 @@ $(document).ready(function() {
     if ($('textarea').val().length === 0) {
       $('.messageTooLongError').slideUp(1000);
       $('.messageNoLengthError').slideDown(1000);
+      return;
     }
 
     if ($('textarea').val().length > 140) {
       $('.messageTooLongError').slideDown(1000);
       $('.messageNoLengthError').slideUp(1000);
+      return;
 
     }
 
-
+    $.post("/tweets", formContent);
 
     $.ajax('/tweets', {method: 'POST'})
       .then(function(res) {
         console.log(res);
         renderTweets(res);
-
       })
-
-    $.post("/tweets", formContent);
   });
 
-  const loadTweets = function() {
-    $.ajax('/tweets', {method: 'GET'})
-      .then(function(res) {
-        console.log(res);
-        renderTweets(res);
-
-      })
-  }
   loadTweets();
 });
 
