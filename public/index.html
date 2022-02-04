@@ -73,6 +73,13 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
+        <div class="error messageNoLengthError">
+          <p>you must enter a tweet before submitting</p>
+        </div>
+
+        <div class="error messageTooLongError">
+          <p>your tweet is too long (140 character max)</p>
+        </div>
         <form action="/tweets" method="POST" id="tweetForm">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>

@@ -35,6 +35,16 @@ $(document).ready(function() {
   //   },
   // ];
 
+
+  const escape = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+
+
+
   // renderTweets function
   // takes in an arary of tweets
   // appends each item in the array to #tweets-container
@@ -65,7 +75,7 @@ $(document).ready(function() {
     </header>
     
     <div class="middle">
-    <p>${tweetData.content.text}</p>
+    <p>${escape(tweetData.content.text)}</p>
     </div>
     
     <footer>
@@ -90,15 +100,28 @@ $(document).ready(function() {
     event.preventDefault();
     const formContent = $(this).serialize();
 
+    // if ($('textarea').val().length === 0) {
+    //   alert("you must enter a tweet before submitting")
+    // }
+    // if ($('textarea').val().length > 140) {
+    //   alert("your tweet is too long (140 character max)")
+
+    // }
+
     if ($('textarea').val().length === 0) {
-      alert("you must enter a tweet before submitting")
+      $('.messageTooLongError').slideUp(1000);
+      $('.messageNoLengthError').slideDown(1000);
     }
+
     if ($('textarea').val().length > 140) {
-      alert("your tweet is too long (140 character max)")
+      $('.messageTooLongError').slideDown(1000);
+      $('.messageNoLengthError').slideUp(1000);
 
     }
 
-    $.ajax('/tweets', {method: 'GET'})
+
+
+    $.ajax('/tweets', {method: 'POST'})
       .then(function(res) {
         console.log(res);
         renderTweets(res);

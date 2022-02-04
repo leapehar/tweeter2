@@ -47,6 +47,20 @@ form button {
   padding: 5px 15px;
 }
 
-.negative-output{
-  color:red;
+.negative-output {
+  color: red;
+}
+
+.error {
+  display: none;
+}
+
+.messageNoLengthError,
+.messageTooLongError {
+  border: 5px solid rgb(190, 10, 10);
+  padding: 15px;
+  font-weight: 600;
+  font-size: 30px;
+  color: rgb(187, 2, 2);
+  text-align: center;
 }
