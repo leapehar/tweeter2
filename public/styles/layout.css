@@ -30,7 +30,6 @@ body {
 main {
   width: 90%;
   margin: 0 auto;
-  /* border: 2px solid blue; */
 }
 
 @media only screen and (min-width: 1024px) {

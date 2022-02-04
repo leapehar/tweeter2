@@ -1,12 +1,3 @@
-.newTweetSection {
-  /* border: 5px solid #545149; */
-  padding: 10px;
-}
-
-/* .newTweetSection:hover {
-  box-shadow: 15px 15px rgba(64, 86, 161, 0.5);
-} */
-
 article.tweet {
   margin-top: 20px;
   border: 5px solid #545149;

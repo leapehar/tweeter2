@@ -1,39 +1,6 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
-// function : createTweetElement
-//generates the DOM structure for a tweet
-// takes tweet object
-// returns <article> element containing the info
 
 $(document).ready(function() {
-  // const tweetData = [
-  //   {
-  //     user: {
-  //       name: "Newton",
-  //       avatars: "https://i.imgur.com/73hZDYK.png",
-  //       handle: "@SirIsaac",
-  //     },
-  //     content: {
-  //       text: "If I have seen further it is by standing on the shoulders of giants",
-  //     },
-  //     created_at: 1643618373314,
-  //   },
-  //   {
-  //     user: {
-  //       name: "Descartes",
-  //       avatars: "https://i.imgur.com/nlhLi3I.png",
-  //       handle: "@rd",
-  //     },
-  //     content: {
-  //       text: "Je pense , donc je suis",
-  //     },
-  //     created_at: 1643704773314,
-  //   },
-  // ];
 
 
   const escape = function(str) {
@@ -43,12 +10,6 @@ $(document).ready(function() {
   };
 
 
-
-
-  // renderTweets function
-  // takes in an arary of tweets
-  // appends each item in the array to #tweets-container
-  // leverages createTweetElement function
   const renderTweets = function(tweetData) {
     for (let tweet of tweetData) {
       const $tweet = createTweetElement(tweet);
@@ -59,12 +20,10 @@ $(document).ready(function() {
   const loadTweets = function() {
     $.ajax('/tweets', {method: 'GET'})
       .then(function(res) {
-        console.log(res);
         renderTweets(res);
-      })
+      });
   };
-  // createTweetElement function
-  //takes in a tweet object and returns a tweet <article> element containing the entire HTML structure of the tweet.
+
   const createTweetElement = function(tweetData) {
     const timeStamp = timeago.format(tweetData.created_at);
 
@@ -100,20 +59,10 @@ $(document).ready(function() {
     return newTweet;
   };
 
-  // renderTweets(tweetData);
 
   $("#tweetForm").submit(function(event) {
-    console.log("Handler for .submit() called.");
     event.preventDefault();
     const formContent = $(this).serialize();
-
-    // if ($('textarea').val().length === 0) {
-    //   alert("you must enter a tweet before submitting")
-    // }
-    // if ($('textarea').val().length > 140) {
-    //   alert("your tweet is too long (140 character max)")
-
-    // }
 
     if ($('textarea').val().length === 0) {
       $('.messageTooLongError').slideUp(1000);
@@ -132,9 +81,8 @@ $(document).ready(function() {
 
     $.ajax('/tweets', {method: 'POST'})
       .then(function(res) {
-        console.log(res);
         renderTweets(res);
-      })
+      });
   });
 
   loadTweets();
